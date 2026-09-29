@@ -2,21 +2,21 @@ import { useNavigate } from "react-router-dom"
 import { useField } from "../hooks"
 
 const CreateNew = ({ addNew }) => {
-	const content = useField('text')
-	const author = useField('text')
-	const info = useField('text')
+	const { reset: contentReset, ...contentInput }= useField('text')
+	const { reset: authorReset, ...authorInput }= useField('text')
+	const { reset: infoReset, ...infoInput }= useField('text')
   const navigate = useNavigate()
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    addNew({ content: content.value, author: author.value, info: info.value, votes: 0 })
+    addNew({ content: contentInput.value, author: authorInput.value, info: infoInput.value, votes: 0 })
     navigate("/")
   }
 	const handleReset = (e) => {
 		e.preventDefault()
-		content.reset();
-		author.reset();
-		info.reset();
+		contentReset()
+		authorReset()
+		infoReset()
 	}
 
   return (
@@ -25,15 +25,15 @@ const CreateNew = ({ addNew }) => {
       <form onSubmit={handleSubmit}>
         <div>
           content
-					<input {...content} />
+					<input {...contentInput} />
         </div>
         <div>
           author
-					<input {...author} />
+					<input {...authorInput} />
         </div>
         <div>
           url for more info
-					<input {...info} />
+					<input {...infoInput} />
         </div>
         <button type="submit">create</button>
 				<button type="button" onClick={handleReset}>reset</button>
