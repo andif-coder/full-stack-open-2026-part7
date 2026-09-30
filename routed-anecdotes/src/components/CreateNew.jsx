@@ -8,9 +8,9 @@ const CreateNew = () => {
   const navigate = useNavigate()
 	const { addAnecdote } = useAnecdotes()
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    addAnecdote({ content: contentInput.value, author: authorInput.value, info: infoInput.value, votes: 0 })
+    await addAnecdote({ content: contentInput.value, author: authorInput.value, info: infoInput.value, votes: 0 })
     navigate("/")
   }
 	const handleReset = (e) => {
