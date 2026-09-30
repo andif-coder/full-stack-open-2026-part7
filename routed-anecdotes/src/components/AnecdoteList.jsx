@@ -1,4 +1,4 @@
-import { useAnecdotes } from "../hooks"
+import { useAnecdotes } from "../hooks/index.jsx"
 const AnecdoteList = () => {
 	const { anecdotes, deleteAnecdote } = useAnecdotes()
   return (
